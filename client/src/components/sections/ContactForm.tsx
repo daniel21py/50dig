@@ -5,7 +5,7 @@ import { MessageSquare } from "lucide-react";
 export default function ContactForm() {
   const handleWhatsAppClick = () => {
     // Format: https://wa.me/<number>?text=<encoded-message>
-    const phoneNumber = "393517749874"; // Your WhatsApp number without + or spaces
+    const phoneNumber = "393881724466"; // Your WhatsApp number without + or spaces
     const message = encodeURIComponent(
       "Ciao! Sono interessato ai tuoi servizi di consulenza AI."
     );
