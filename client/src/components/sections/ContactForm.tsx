@@ -96,7 +96,7 @@ export default function ContactForm() {
                   <FormItem className="mb-6">
                     <FormLabel>Messaggio</FormLabel>
                     <FormControl>
-                      <Textarea 
+                      <Textarea
                         placeholder="Come posso aiutarti?"
                         className="min-h-[120px]"
                         {...field}
@@ -107,8 +107,8 @@ export default function ContactForm() {
                 )}
               />
 
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full"
                 disabled={mutation.isPending}
               >
