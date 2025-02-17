@@ -32,7 +32,9 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
-            <Button>Inizia Ora</Button>
+            <a href="/#contact">
+              <Button>Inizia Ora</Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -57,7 +59,9 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
-            <Button className="w-full mt-4">Inizia Ora</Button>
+            <a href="/#contact" onClick={() => setIsOpen(false)}>
+              <Button className="w-full mt-4">Inizia Ora</Button>
+            </a>
           </div>
         )}
       </div>
