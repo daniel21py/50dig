@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Mail } from "lucide-react";
 
 export default function ContactForm() {
   const { toast } = useToast();
@@ -29,33 +30,64 @@ export default function ContactForm() {
 
   const mutation = useMutation({
     mutationFn: async (data: InsertContact) => {
-      const response = await fetch("/api/contact.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      try {
+        // First try the API endpoint
+        const response = await fetch("/api/contact.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Si è verificato un errore nell'invio del messaggio");
+        if (!response.ok) {
+          throw new Error("API error");
+        }
+
+        return response.json();
+      } catch (error) {
+        // If API fails, provide mailto link as fallback
+        const mailtoUrl = `mailto:info@50digital.it?subject=Nuovo messaggio da ${encodeURIComponent(data.name)}&body=${encodeURIComponent(`Nome: ${data.name}\nEmail: ${data.email}\n\nMessaggio:\n${data.message}`)}`;
+        window.location.href = mailtoUrl;
+        return { success: true, fallback: true };
       }
-
-      return response.json();
     },
-    onSuccess: () => {
-      toast({
-        title: "Messaggio inviato!",
-        description: "Ti risponderemo al più presto."
-      });
+    onSuccess: (data) => {
+      if (data.fallback) {
+        toast({
+          title: "Email client aperto",
+          description: "Ti abbiamo reindirizzato al tuo client email per inviare il messaggio.",
+        });
+      } else {
+        toast({
+          title: "Messaggio inviato!",
+          description: "Ti risponderemo al più presto."
+        });
+      }
       form.reset();
     },
-    onError: (error) => {
+    onError: () => {
       toast({
         variant: "destructive",
         title: "Errore",
-        description: error.message || "Qualcosa è andato storto. Per favore riprova."
+        description: (
+          <div className="space-y-2">
+            <p>Non è stato possibile inviare il messaggio direttamente.</p>
+            <Button
+              variant="outline"
+              size="sm"
+              className="w-full"
+              onClick={() => {
+                const { name, email, message } = form.getValues();
+                const mailtoUrl = `mailto:info@50digital.it?subject=Nuovo messaggio da ${encodeURIComponent(name)}&body=${encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\nMessaggio:\n${message}`)}`;
+                window.location.href = mailtoUrl;
+              }}
+            >
+              <Mail className="mr-2 h-4 w-4" />
+              Apri nel client email
+            </Button>
+          </div>
+        )
       });
     }
   });
@@ -127,6 +159,16 @@ export default function ContactForm() {
               >
                 {mutation.isPending ? "Invio in corso..." : "Invia Messaggio"}
               </Button>
+
+              <p className="mt-4 text-sm text-center text-muted-foreground">
+                In alternativa, puoi inviarmi una email direttamente a{' '}
+                <a 
+                  href="mailto:info@50digital.it"
+                  className="text-[#7FFF00] hover:underline"
+                >
+                  info@50digital.it
+                </a>
+              </p>
             </form>
           </Form>
         </motion.div>
