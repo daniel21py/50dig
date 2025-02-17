@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface SuccessStory {
@@ -56,7 +55,7 @@ const cardVariants = {
 
 export default function SuccessStories() {
   const isMobile = useIsMobile();
-  
+
   return (
     <section id="success-stories" className="py-20 bg-black/50">
       <div className="container mx-auto px-4">
@@ -93,7 +92,7 @@ export default function SuccessStories() {
                 transition={{ duration: 1, delay: index * 0.2 }}
                 className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#7FFF00]/50 to-[#7FFF00]"
               />
-              
+
               <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-[#7FFF00] transition-colors">
                 {story.title}
               </h3>
@@ -110,21 +109,6 @@ export default function SuccessStories() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <Button
-            className="bg-[#7FFF00] text-black hover:bg-[#7FFF00]/90"
-            size="lg"
-          >
-            Scopri di Più
-          </Button>
         </motion.div>
       </div>
     </section>
