@@ -24,34 +24,41 @@ const itemVariants = {
   }
 };
 
-// Sfondo animato
+// Sfondo animato con più forme e movimenti più rapidi
 const BackgroundAnimation = () => {
-  // Array di diverse forme e dimensioni
-  const shapes = [
-    { size: 120, duration: 25, delay: 0, opacity: 0.1, borderWidth: 2 },
-    { size: 180, duration: 30, delay: 2, opacity: 0.08, borderWidth: 3 },
-    { size: 90, duration: 20, delay: 1, opacity: 0.12, borderWidth: 1 },
-    { size: 150, duration: 28, delay: 3, opacity: 0.07, borderWidth: 2 },
-    { size: 200, duration: 35, delay: 4, opacity: 0.05, borderWidth: 4 },
-    { size: 100, duration: 22, delay: 2, opacity: 0.09, borderWidth: 2 },
-    { size: 160, duration: 32, delay: 1, opacity: 0.06, borderWidth: 3 },
-    { size: 130, duration: 27, delay: 3, opacity: 0.08, borderWidth: 2 }
-  ];
+  const shapes = Array(15).fill(null).map((_, i) => ({
+    size: Math.random() * 150 + 50, // 50-200px
+    duration: Math.random() * 15 + 10, // 10-25s
+    delay: Math.random() * 5,
+    opacity: Math.random() * 0.1 + 0.05,
+    borderWidth: Math.floor(Math.random() * 3) + 1,
+    initialX: Math.random() * 100,
+    initialY: Math.random() * 100,
+    direction: i % 2 === 0 ? 1 : -1
+  }));
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none">
       {shapes.map((shape, i) => (
         <motion.div
           key={i}
           className="absolute"
           initial={{ 
-            x: `${Math.random() * 100}%`,
-            y: `${Math.random() * 100}%`
+            x: `${shape.initialX}%`,
+            y: `${shape.initialY}%`
           }}
           animate={{
-            x: ["0%", "100%", "0%"],
-            y: [`${i * 10}%`, `${(i * 10 + 50) % 100}%`, `${i * 10}%`],
-            rotate: [0, 180, 360],
+            x: [
+              `${shape.initialX}%`,
+              `${(shape.initialX + 100 * shape.direction) % 100}%`,
+              `${shape.initialX}%`
+            ],
+            y: [
+              `${shape.initialY}%`,
+              `${(shape.initialY + 70) % 100}%`,
+              `${shape.initialY}%`
+            ],
+            rotate: [0, 360 * shape.direction],
             scale: [1, 1.2, 1]
           }}
           transition={{
@@ -64,9 +71,11 @@ const BackgroundAnimation = () => {
             width: `${shape.size}px`,
             height: `${shape.size}px`,
             border: `${shape.borderWidth}px solid rgba(127, 255, 0, ${shape.opacity})`,
-            borderRadius: i % 2 === 0 
+            borderRadius: i % 3 === 0 
               ? "30% 70% 70% 30% / 30% 30% 70% 70%" 
-              : "60% 40% 30% 70% / 60% 30% 70% 40%",
+              : i % 3 === 1
+                ? "60% 40% 30% 70% / 60% 30% 70% 40%"
+                : "50% 50% 50% 50% / 50% 50% 50% 50%",
             filter: "blur(0.5px)"
           }}
         />

@@ -19,9 +19,12 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-background flex flex-col">
+      <div className="min-h-screen bg-background flex flex-col relative">
+        <div className="fixed inset-0 -z-10 bg-black">
+          {/* This div ensures black background even during animation transitions */}
+        </div>
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow relative">
           <Router />
         </main>
         <Footer />

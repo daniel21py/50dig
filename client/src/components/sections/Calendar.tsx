@@ -1,16 +1,6 @@
-import Cal, { getCalApi } from "@calcom/embed-react";
-import { useEffect } from "react";
+import Cal from "@calcom/embed-react";
 
 export default function Calendar() {
-  useEffect(() => {
-    (async function () {
-      const cal = await getCalApi();
-      cal.config({
-        theme: "dark",
-      });
-    })();
-  }, []);
-
   return (
     <section id="calendar" className="py-20 bg-black">
       <div className="container mx-auto px-4">
@@ -28,7 +18,6 @@ export default function Calendar() {
             config={{
               name: "Consulenza AI",
               theme: "dark",
-              hideEventTypeDetails: false,
               layout: "month_view"
             }}
           />
