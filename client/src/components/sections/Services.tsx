@@ -7,7 +7,7 @@ export default function Services() {
     {
       icon: <Bot className="h-8 w-8" />,
       title: "Integrazione AI",
-      description: "Integra facilmente strumenti AI nel tuo flusso di lavoro esistente"
+      description: "Integra facilmente strumenti AI nel tuo flusso di lavoro esistente per automatizzare e ottimizzare i processi"
     },
     {
       icon: <LineChart className="h-8 w-8" />,
@@ -44,15 +44,16 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
+              className="h-full"
             >
-              <Card>
-                <CardHeader>
+              <Card className="h-full flex flex-col">
+                <CardHeader className="flex-none">
                   <div className="mb-4 inline-block p-3 bg-primary/10 rounded-full">
                     {service.icon}
                   </div>
                   <CardTitle>{service.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-grow flex items-center">
                   <p className="text-muted-foreground">{service.description}</p>
                 </CardContent>
               </Card>
