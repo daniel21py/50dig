@@ -10,6 +10,7 @@ export default function Navbar() {
     { label: "Home", href: "/" },
     { label: "Chi Siamo", href: "/#about" },
     { label: "Servizi", href: "/#services" },
+    { label: "Prenota", href: "/#calendar" },
     { label: "Contatti", href: "/#contact" }
   ];
 
