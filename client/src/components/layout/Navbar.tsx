@@ -20,7 +20,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link href="/">
             <img 
-              src="/attached_assets/logo_transparent.png" 
+              src="/assets/logo_transparent.png" 
               alt="5.0 Digital Logo" 
               className="h-12 w-auto"
             />
