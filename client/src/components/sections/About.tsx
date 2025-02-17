@@ -6,18 +6,18 @@ export default function About() {
   const features = [
     {
       icon: <Brain className="h-8 w-8" />,
-      title: "AI Expertise",
-      description: "Deep understanding of AI technologies and their business applications"
+      title: "Esperienza AI",
+      description: "Profonda comprensione delle tecnologie AI e delle loro applicazioni aziendali"
     },
     {
       icon: <TrendingUp className="h-8 w-8" />,
-      title: "Business Growth",
-      description: "Proven track record of helping businesses scale with AI solutions"
+      title: "Crescita Aziendale",
+      description: "Comprovata esperienza nell'aiutare le imprese a crescere con soluzioni AI"
     },
     {
       icon: <Users className="h-8 w-8" />,
-      title: "Personal Approach",
-      description: "Tailored solutions that match your specific business needs"
+      title: "Approccio Personale",
+      description: "Soluzioni su misura che si adattano alle tue specifiche esigenze aziendali"
     }
   ];
 
@@ -25,11 +25,24 @@ export default function About() {
     <section id="about" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">About Us</h2>
-          <p className="text-muted-foreground">
-            We are entrepreneurs who understand the challenges of running a business. 
-            Our mission is to make AI accessible and practical for businesses of all sizes.
-          </p>
+          <h2 className="text-3xl font-bold mb-4">Chi Sono</h2>
+          <div className="text-muted-foreground space-y-4">
+            <p>
+              Ciao! Sono Daniel, un imprenditore come te. L'unica differenza è che ho iniziato 
+              già tempo fa a chiedermi come poter utilizzare l'AI nella mia attività, come integrarla 
+              per eliminare quelle attività che mi occupavano troppo tempo, tempo che avrei potuto 
+              investire in modo più strategico.
+            </p>
+            <p>
+              Ho iniziato a studiare, sperimentare quello che imparavo e, inevitabilmente, anche a 
+              fallire e scervellarmi per ore, dato che non sono un programmatore. Ma grazie a tutto 
+              questo percorso, oggi posso aiutarti a evitare gli stessi ostacoli.
+            </p>
+            <p>
+              La mia missione è guidarti verso le strategie giuste da implementare, i tool da 
+              utilizzare e i metodi per semplificare la tua vita imprenditoriale!
+            </p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">

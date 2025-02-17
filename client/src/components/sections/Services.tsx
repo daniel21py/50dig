@@ -6,23 +6,23 @@ export default function Services() {
   const services = [
     {
       icon: <Bot className="h-8 w-8" />,
-      title: "AI Integration",
-      description: "Seamlessly integrate AI tools into your existing workflow"
+      title: "Integrazione AI",
+      description: "Integra facilmente strumenti AI nel tuo flusso di lavoro esistente"
     },
     {
       icon: <LineChart className="h-8 w-8" />,
-      title: "Process Optimization",
-      description: "Identify and automate repetitive tasks for maximum efficiency"
+      title: "Ottimizzazione Processi",
+      description: "Identifica e automatizza le attività ripetitive per massima efficienza"
     },
     {
       icon: <Clock className="h-8 w-8" />,
-      title: "Time Savings",
-      description: "Reduce manual work and focus on strategic activities"
+      title: "Risparmio di Tempo",
+      description: "Riduci il lavoro manuale e concentrati sulle attività strategiche"
     },
     {
       icon: <DollarSign className="h-8 w-8" />,
-      title: "Cost Reduction",
-      description: "Lower operational costs through intelligent automation"
+      title: "Riduzione Costi",
+      description: "Abbassa i costi operativi attraverso l'automazione intelligente"
     }
   ];
 
@@ -30,9 +30,9 @@ export default function Services() {
     <section id="services" className="py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Our Services</h2>
+          <h2 className="text-3xl font-bold mb-4">I Nostri Servizi</h2>
           <p className="text-muted-foreground">
-            We offer comprehensive AI consulting services to help your business thrive in the digital age
+            Offriamo servizi di consulenza AI completi per aiutare la tua azienda a prosperare nell'era digitale
           </p>
         </div>
 

@@ -12,17 +12,17 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Transform Your Business with AI Solutions
+            Trasforma la Tua Azienda con l'Intelligenza Artificiale
           </motion.h1>
-          
+
           <motion.p 
             className="text-xl text-muted-foreground mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Unlock efficiency and reduce costs by integrating AI into your daily operations. 
-            We help businesses like yours navigate the AI landscape.
+            Ottimizza l'efficienza e riduci i costi integrando l'AI nelle tue operazioni quotidiane.
+            Ti aiutiamo a navigare nel mondo dell'intelligenza artificiale con soluzioni pratiche.
           </motion.p>
 
           <motion.div
@@ -30,8 +30,8 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <Button size="lg" className="mr-4">Schedule a Consultation</Button>
-            <Button size="lg" variant="outline">Learn More</Button>
+            <Button size="lg" className="mr-4">Prenota una Consulenza</Button>
+            <Button size="lg" variant="outline">Scopri di Più</Button>
           </motion.div>
         </div>
       </div>

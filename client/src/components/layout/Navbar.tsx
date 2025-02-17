@@ -8,9 +8,9 @@ export default function Navbar() {
 
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "About", href: "/#about" },
-    { label: "Services", href: "/#services" },
-    { label: "Contact", href: "/#contact" }
+    { label: "Chi Siamo", href: "/#about" },
+    { label: "Servizi", href: "/#services" },
+    { label: "Contatti", href: "/#contact" }
   ];
 
   return (
@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/">
-            <a className="text-xl font-bold">AI Solutions</a>
+            <span className="text-xl font-bold">Soluzioni AI</span>
           </Link>
 
           {/* Desktop Menu */}
@@ -32,7 +32,7 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
-            <Button>Get Started</Button>
+            <Button>Inizia Ora</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -57,7 +57,7 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
-            <Button className="w-full mt-4">Get Started</Button>
+            <Button className="w-full mt-4">Inizia Ora</Button>
           </div>
         )}
       </div>

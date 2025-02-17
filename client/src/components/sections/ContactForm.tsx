@@ -33,16 +33,16 @@ export default function ContactForm() {
       apiRequest("POST", "/api/contact", data),
     onSuccess: () => {
       toast({
-        title: "Message sent!",
-        description: "We'll get back to you soon."
+        title: "Messaggio inviato!",
+        description: "Ti risponderemo al più presto."
       });
       form.reset();
     },
     onError: () => {
       toast({
         variant: "destructive",
-        title: "Error",
-        description: "Something went wrong. Please try again."
+        title: "Errore",
+        description: "Qualcosa è andato storto. Per favore riprova."
       });
     }
   });
@@ -57,8 +57,8 @@ export default function ContactForm() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold text-center mb-8">Contact Us</h2>
-          
+          <h2 className="text-3xl font-bold text-center mb-8">Contattami</h2>
+
           <Form {...form}>
             <form onSubmit={form.handleSubmit((data) => mutation.mutate(data))}>
               <FormField
@@ -66,9 +66,9 @@ export default function ContactForm() {
                 name="name"
                 render={({ field }) => (
                   <FormItem className="mb-4">
-                    <FormLabel>Name</FormLabel>
+                    <FormLabel>Nome</FormLabel>
                     <FormControl>
-                      <Input placeholder="Your name" {...field} />
+                      <Input placeholder="Il tuo nome" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -82,7 +82,7 @@ export default function ContactForm() {
                   <FormItem className="mb-4">
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="your@email.com" {...field} />
+                      <Input placeholder="tua@email.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -94,10 +94,10 @@ export default function ContactForm() {
                 name="message"
                 render={({ field }) => (
                   <FormItem className="mb-6">
-                    <FormLabel>Message</FormLabel>
+                    <FormLabel>Messaggio</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="How can we help?"
+                        placeholder="Come posso aiutarti?"
                         className="min-h-[120px]"
                         {...field}
                       />
@@ -112,7 +112,7 @@ export default function ContactForm() {
                 className="w-full"
                 disabled={mutation.isPending}
               >
-                {mutation.isPending ? "Sending..." : "Send Message"}
+                {mutation.isPending ? "Invio in corso..." : "Invia Messaggio"}
               </Button>
             </form>
           </Form>
