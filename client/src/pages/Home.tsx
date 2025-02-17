@@ -3,6 +3,7 @@ import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import Calendar from "@/components/sections/Calendar";
 import ContactForm from "@/components/sections/ContactForm";
+import SuccessStories from "@/components/sections/SuccessStories";
 import PageTransition from "@/components/layout/PageTransition";
 import { motion } from "framer-motion";
 
@@ -47,6 +48,15 @@ export default function Home() {
           variants={sectionVariants}
         >
           <Services />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+        >
+          <SuccessStories />
         </motion.div>
 
         <motion.div
