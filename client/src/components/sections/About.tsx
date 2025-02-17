@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Brain, TrendingUp, Users } from "lucide-react";
+import { Brain, TrendingUp, Users, BarChart } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,18 +28,23 @@ export default function About() {
   const features = [
     {
       icon: <Brain className="h-8 w-8 text-[#7FFF00]" />,
-      title: "Esperienza AI",
-      description: "Profonda comprensione delle tecnologie AI e delle loro applicazioni aziendali"
+      title: "Consulenza Strategica",
+      description: "Analizzo le esigenze della tua impresa per identificare le migliori opportunità di implementazione dell'AI"
     },
     {
       icon: <TrendingUp className="h-8 w-8 text-[#7FFF00]" />,
-      title: "Crescita Aziendale",
-      description: "Comprovata esperienza nell'aiutare le imprese a crescere con soluzioni AI"
+      title: "Implementazione AI",
+      description: "Supporto nell'integrazione di strumenti AI che semplificano le attività quotidiane"
     },
     {
       icon: <Users className="h-8 w-8 text-[#7FFF00]" />,
-      title: "Approccio Personale",
-      description: "Soluzioni su misura che si adattano alle tue specifiche esigenze aziendali"
+      title: "Formazione e Supporto",
+      description: "Sessioni di training dedicate per te e il tuo team per sfruttare al massimo il potenziale dell'AI"
+    },
+    {
+      icon: <BarChart className="h-8 w-8 text-[#7FFF00]" />,
+      title: "Ottimizzazione Processi",
+      description: "Analisi dei dati e identificazione delle aree di miglioramento per aumentare la produttività"
     }
   ];
 
@@ -57,31 +62,26 @@ export default function About() {
             className="text-3xl font-bold mb-4 text-[#7FFF00]"
             variants={itemVariants}
           >
-            Chi Sono
+            Cosa Offro
           </motion.h2>
           <motion.div 
-            className="text-white/80 space-y-4"
+            className="text-white/80 space-y-6"
             variants={itemVariants}
           >
             <p>
-              Ciao! Sono Daniel, un imprenditore come te. L'unica differenza è che ho iniziato 
-              già tempo fa a chiedermi come poter utilizzare l'AI nella mia attività, come integrarla 
-              per eliminare quelle attività che mi occupavano troppo tempo, tempo che avrei potuto 
-              investire in modo più strategico.
+              La mia missione è rendere l'intelligenza artificiale accessibile e vantaggiosa per ogni imprenditore. 
+              Sono specializzato nel tradurre le potenzialità dell'AI in soluzioni concrete e personalizzate, 
+              capaci di ottimizzare le operazioni quotidiane e ridurre i costi operativi.
             </p>
             <p>
-              Ho iniziato a studiare, sperimentare quello che imparavo e, inevitabilmente, anche a 
-              fallire e scervellarmi per ore, dato che non sono un programmatore. Ma grazie a tutto 
-              questo percorso, oggi posso aiutarti a evitare gli stessi ostacoli.
-            </p>
-            <p>
-              La mia missione è guidarti verso le strategie giuste da implementare, i tool da 
-              utilizzare e i metodi per semplificare la tua vita imprenditoriale!
+              Che tu stia cercando di ridurre i costi, semplificare la gestione quotidiana o innovare il tuo modo di lavorare, 
+              sono qui per guidarti in ogni fase del percorso. Insieme, possiamo trasformare le sfide in opportunità e 
+              dare al tuo business la marcia in più per competere nel mercato odierno.
             </p>
           </motion.div>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -102,7 +102,7 @@ export default function About() {
               viewport={{ once: true }}
             >
               <Card className="bg-black/50 border-[#7FFF00]/20 hover:border-[#7FFF00]/50 transition-colors">
-                <CardContent className="pt-6 text-center">
+                <CardContent className="pt-6">
                   <div className="mb-4 inline-block p-3 bg-[#7FFF00]/10 rounded-full">
                     {feature.icon}
                   </div>
