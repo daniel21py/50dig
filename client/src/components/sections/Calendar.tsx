@@ -1,6 +1,18 @@
-import Cal from "@calcom/embed-react";
+import { useEffect } from "react";
 
 export default function Calendar() {
+  useEffect(() => {
+    // Carica lo script Calendly
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <section id="calendar" className="py-20 bg-black">
       <div className="container mx-auto px-4">
@@ -12,14 +24,10 @@ export default function Calendar() {
         </div>
 
         <div className="max-w-4xl mx-auto bg-black/50 p-4 rounded-lg border border-[#7FFF00]/20">
-          <Cal 
-            calLink="danielmaz/consulenza"
-            style={{width: "100%", height: "100%", minHeight: "800px", border: "none"}}
-            config={{
-              name: "Consulenza AI",
-              theme: "dark",
-              layout: "month_view"
-            }}
+          <div 
+            className="calendly-inline-widget" 
+            data-url="https://calendly.com/50digital?hide_gdpr_banner=1&background_color=1a1a1a&text_color=80ff00&primary_color=00f0ff"
+            style={{ minWidth: "320px", height: "700px" }}
           />
         </div>
       </div>
