@@ -26,28 +26,48 @@ const itemVariants = {
 
 // Sfondo animato
 const BackgroundAnimation = () => {
+  // Array di diverse forme e dimensioni
+  const shapes = [
+    { size: 120, duration: 25, delay: 0, opacity: 0.1, borderWidth: 2 },
+    { size: 180, duration: 30, delay: 2, opacity: 0.08, borderWidth: 3 },
+    { size: 90, duration: 20, delay: 1, opacity: 0.12, borderWidth: 1 },
+    { size: 150, duration: 28, delay: 3, opacity: 0.07, borderWidth: 2 },
+    { size: 200, duration: 35, delay: 4, opacity: 0.05, borderWidth: 4 },
+    { size: 100, duration: 22, delay: 2, opacity: 0.09, borderWidth: 2 },
+    { size: 160, duration: 32, delay: 1, opacity: 0.06, borderWidth: 3 },
+    { size: 130, duration: 27, delay: 3, opacity: 0.08, borderWidth: 2 }
+  ];
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(5)].map((_, i) => (
+      {shapes.map((shape, i) => (
         <motion.div
           key={i}
           className="absolute"
+          initial={{ 
+            x: `${Math.random() * 100}%`,
+            y: `${Math.random() * 100}%`
+          }}
           animate={{
             x: ["0%", "100%", "0%"],
-            y: [(i * 20) + "%", ((i * 20) + 10) + "%", (i * 20) + "%"],
-            rotate: [0, 180, 360]
+            y: [`${i * 10}%`, `${(i * 10 + 50) % 100}%`, `${i * 10}%`],
+            rotate: [0, 180, 360],
+            scale: [1, 1.2, 1]
           }}
           transition={{
-            duration: 20 + i * 5,
+            duration: shape.duration,
+            delay: shape.delay,
             repeat: Infinity,
             ease: "linear"
           }}
           style={{
-            left: `${i * 25}%`,
-            width: "120px",
-            height: "120px",
-            border: "2px solid rgba(127, 255, 0, 0.1)",
-            borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%"
+            width: `${shape.size}px`,
+            height: `${shape.size}px`,
+            border: `${shape.borderWidth}px solid rgba(127, 255, 0, ${shape.opacity})`,
+            borderRadius: i % 2 === 0 
+              ? "30% 70% 70% 30% / 30% 30% 70% 70%" 
+              : "60% 40% 30% 70% / 60% 30% 70% 40%",
+            filter: "blur(0.5px)"
           }}
         />
       ))}
