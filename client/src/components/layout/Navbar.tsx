@@ -19,7 +19,11 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/">
-            <span className="text-xl font-bold text-[#7FFF00]">Soluzioni AI</span>
+            <img 
+              src="/attached_assets/logo_transparent.png" 
+              alt="5.0 Digital Logo" 
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Menu */}
