@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import {
   Form,
@@ -29,8 +28,22 @@ export default function ContactForm() {
   });
 
   const mutation = useMutation({
-    mutationFn: (data: InsertContact) =>
-      apiRequest("POST", "/api/contact", data),
+    mutationFn: async (data: InsertContact) => {
+      const response = await fetch("/api/contact.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Si è verificato un errore nell'invio del messaggio");
+      }
+
+      return response.json();
+    },
     onSuccess: () => {
       toast({
         title: "Messaggio inviato!",
@@ -38,11 +51,11 @@ export default function ContactForm() {
       });
       form.reset();
     },
-    onError: () => {
+    onError: (error) => {
       toast({
         variant: "destructive",
         title: "Errore",
-        description: "Qualcosa è andato storto. Per favore riprova."
+        description: error.message || "Qualcosa è andato storto. Per favore riprova."
       });
     }
   });
@@ -109,7 +122,7 @@ export default function ContactForm() {
 
               <Button
                 type="submit"
-                className="w-full"
+                className="w-full bg-[#7FFF00] text-black hover:bg-[#7FFF00]/90"
                 disabled={mutation.isPending}
               >
                 {mutation.isPending ? "Invio in corso..." : "Invia Messaggio"}
